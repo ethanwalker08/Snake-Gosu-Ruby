@@ -21,7 +21,7 @@ class SnakeGame < Gosu::Window
     TEXT_COLOR = Gosu::Color::WHITE
 
     def initialize
-        super(SCREEN_WIDTH, SCREEN_HEIGHT, false, 60)
+        super(SCREEN_WIDTH, SCREEN_HEIGHT, false, 80)
         
         @map = Map.new(MAP_WIDTH, MAP_HEIGHT)
         @font = Gosu::Font.new(self, Gosu.default_font_name, 50)
@@ -76,7 +76,7 @@ class SnakeGame < Gosu::Window
     end
 
     def you_died
-        @text = "You died!"
+        @text = "You died! GET REKT"
         @draw_text_now = true
         p @text
         @paused = true
@@ -94,6 +94,10 @@ class SnakeGame < Gosu::Window
             when Gosu::KbUp then @direction == :down ? @direction : :up
             when Gosu::KbLeft  then @direction == :right ? @direction : :left
             when Gosu::KbDown  then @direction == :up ? @direction : :down
+            when Gosu::KbK then @direction == :left ? @direction : :right
+            when Gosu::KbH then @direction == :down ? @direction : :up
+            when Gosu::KbJ  then @direction == :right ? @direction : :left
+            when Gosu::KbL  then @direction == :up ? @direction : :down
             else @direction
           end
     end
